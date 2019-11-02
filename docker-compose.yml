@@ -1,12 +1,15 @@
 version: '3'
 services: 
-  mongo-log:
-    image: 'mongo'
+  tully:
+    image: tullyapps/mongo-logs
+    build:
+      context: ./
+      dockerfile: mongo.DockerFile
     environment:
         # provide your credentials here
         - MONGO_INITDB_DATABASE=logs
-        - MONGO_INITDB_ROOT_USERNAME=root
-        - MONGO_INITDB_ROOT_PASSWORD=root
+        - MONGO_INITDB_ROOT_USERNAME=tully
+        - MONGO_INITDB_ROOT_PASSWORD=tullylogs
     ports:
       - "27020:27017"
     volumes:
