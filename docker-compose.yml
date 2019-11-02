@@ -1,0 +1,17 @@
+version: '3'
+services: 
+  mongo-log:
+    image: 'mongo'
+    environment:
+        # provide your credentials here
+        - MONGO_INITDB_DATABASE=logs
+        - MONGO_INITDB_ROOT_USERNAME=root
+        - MONGO_INITDB_ROOT_PASSWORD=root
+    ports:
+      - "27020:27017"
+    volumes:
+        - /home/kathan/mongo-data:/data/db
+        # if you wish to setup additional user accounts specific per DB or with different roles you can use following entry point
+        # - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+    # no --auth is needed here as presence of username and password add this option automatically
+    # command: mongod
